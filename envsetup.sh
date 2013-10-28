@@ -85,7 +85,11 @@ function check_product()
        CM_BUILD=$(echo -n $1 | sed -e 's/^cm_//g')
        export BUILD_NUMBER=$((date +%s%N ; echo $CM_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10)
     else
-       CM_BUILD=
+        if (echo -n $1 | grep -q -e "^replicant_") ; then
+           CM_BUILD=$(echo -n $1 | sed -e 's/^replicant_//g')
+        else
+           CM_BUILD=
+        fi
     fi
     export CM_BUILD
 
@@ -549,7 +553,7 @@ function breakfast()
     CM_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
-    for f in `/bin/ls vendor/cm/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/replicant/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
