@@ -20,14 +20,22 @@
 PRODUCT_PACKAGES := \
     Bluetooth \
     BluetoothMidiService \
-    Camera2 \
-    Gallery2 \
     Music \
     MusicFX \
     OneTimeInitializer \
     Provision \
     SystemUI \
     WallpaperCropper
+
+ifeq ($(USE_OPENGL_RENDERER),true)
+PRODUCT_PACKAGES += \
+    Gallery2 \
+    Camera2
+else
+PRODUCT_PACKAGES += \
+    Gallery \
+    LegacyCamera
+endif
 
 PRODUCT_PACKAGES += \
     clatd \
