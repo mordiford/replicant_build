@@ -489,6 +489,8 @@ else
 INSTALLED_XLOADER_MODULE := $(PRODUCT_OUT)/x-load.bin
 endif
 
+INSTALLED_UBOOT_MODULE := $(PRODUCT_OUT)/u-boot.bin
+
 # -----------------------------------------------------------------
 # the ramdisk
 INTERNAL_RAMDISK_FILES := $(filter $(TARGET_ROOT_OUT)/%, \
