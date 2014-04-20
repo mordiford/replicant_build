@@ -479,6 +479,12 @@ else
   INSTALLED_KERNEL_TARGET :=
 endif
 
+ifeq ($(TARGET_XLOADER_MLO),true)
+INSTALLED_XLOADER_MODULE := $(PRODUCT_OUT)/MLO
+else
+INSTALLED_XLOADER_MODULE := $(PRODUCT_OUT)/x-load.bin
+endif
+
 # -----------------------------------------------------------------
 # the ramdisk
 INTERNAL_RAMDISK_FILES := $(filter $(TARGET_ROOT_OUT)/%, \
