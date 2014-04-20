@@ -492,6 +492,10 @@ endif
 INSTALLED_UBOOT_MODULE := $(PRODUCT_OUT)/u-boot.bin
 
 # -----------------------------------------------------------------
+# the bootloader
+INSTALLED_BOOTLOADERIMAGE_TARGET := $(PRODUCT_OUT)/bootloader.img
+
+# -----------------------------------------------------------------
 # the ramdisk
 INTERNAL_RAMDISK_FILES := $(filter $(TARGET_ROOT_OUT)/%, \
 	$(ALL_PREBUILT) \
