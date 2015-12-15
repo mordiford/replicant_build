@@ -122,7 +122,8 @@ PRODUCT_PACKAGES += \
     tm \
     vdc \
     vold \
-    wm
+    wm \
+    libGLES_android
 
 
 PRODUCT_COPY_FILES := $(call add-to-product-copy-files-if-exists,\
