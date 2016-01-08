@@ -354,8 +354,6 @@ ifeq ($(strip $(WITH_SYNTAX_CHECK)),0)
   WITH_SYNTAX_CHECK :=
 endif
 
-# Disable WITH_STATIC_ANALYZER and WITH_SYNTAX_CHECK if tool can't be found
-SYNTAX_TOOLS_PREFIX := prebuilts/misc/$(HOST_PREBUILT_TAG)/analyzer/bin
 ifneq ($(strip $(WITH_STATIC_ANALYZER)),)
   ifeq ($(wildcard $(SYNTAX_TOOLS_PREFIX)/ccc-analyzer),)
     $(warning *** Disable WITH_STATIC_ANALYZER because $(SYNTAX_TOOLS_PREFIX)/ccc-analyzer does not exist)
@@ -410,16 +408,16 @@ JACK_LAUNCHER_JAR := $(HOST_OUT_JAVA_LIBRARIES)/jack-launcher.jar
 JILL_JAR := $(HOST_OUT_JAVA_LIBRARIES)/jill.jar
 JACK_MULTIDEX_DEFAULT_PREPROCESSOR := frameworks/multidex/library/resources/JACK-INF/legacyMultidexInstallation.jpp
 
-LEX := prebuilts/misc/$(BUILD_OS)-$(HOST_PREBUILT_ARCH)/flex/flex-2.5.39
+LEX := /usr/bin/flex
 # The default PKGDATADIR built in the prebuilt bison is a relative path
 # external/bison/data.
 # To run bison from elsewhere you need to set up enviromental variable
 # BISON_PKGDATADIR.
 BISON_PKGDATADIR := $(PWD)/external/bison/data
-BISON := prebuilts/misc/$(BUILD_OS)-$(HOST_PREBUILT_ARCH)/bison/bison
+BISON := /usr/bin/bison
 YACC := $(BISON) -d
 
-YASM := prebuilts/misc/$(BUILD_OS)-$(HOST_PREBUILT_ARCH)/yasm/yasm
+YASM := /usr/bin/yasm
 
 DOXYGEN:= doxygen
 AAPT := $(HOST_OUT_EXECUTABLES)/aapt$(HOST_EXECUTABLE_SUFFIX)
@@ -514,8 +512,7 @@ ZIPALIGN := $(HOST_OUT_EXECUTABLES)/zipalign$(HOST_EXECUTABLE_SUFFIX)
 # relocation packer
 RELOCATION_PACKER := prebuilts/misc/$(BUILD_OS)-$(HOST_PREBUILT_ARCH)/relocation_packer/relocation_packer
 
-FINDBUGS_DIR := external/owasp/sanitizer/tools/findbugs/bin
-FINDBUGS := $(FINDBUGS_DIR)/findbugs
+FINDBUGS := /usr/bin/findbugs
 EMMA_JAR := external/emma/lib/emma$(COMMON_JAVA_PACKAGE_SUFFIX)
 
 # Tool to merge AndroidManifest.xmls
