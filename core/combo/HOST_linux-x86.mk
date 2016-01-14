@@ -20,9 +20,9 @@
 ifeq ($(strip $($(combo_2nd_arch_prefix)HOST_TOOLCHAIN_PREFIX)),)
 $(combo_2nd_arch_prefix)HOST_TOOLCHAIN_PREFIX := prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/bin/x86_64-linux-
 endif
-$(combo_2nd_arch_prefix)HOST_CC  := toolchain/gcc/host/install/bin/gcc
-$(combo_2nd_arch_prefix)HOST_CXX := toolchain/gcc/host/install/bin/g++
-$(combo_2nd_arch_prefix)HOST_AR  := toolchain/gcc/host/install/bin/ar
+$(combo_2nd_arch_prefix)HOST_CC  := toolchain/gcc/host/install/bin/x86_64-linux-gcc
+$(combo_2nd_arch_prefix)HOST_CXX := toolchain/gcc/host/install/bin/x86_64-linux-g++
+$(combo_2nd_arch_prefix)HOST_AR  := toolchain/gcc/host/install/bin/x86_64-linux-ar
 
 # gcc location for clang; to be updated when clang is updated
 $(combo_2nd_arch_prefix)HOST_TOOLCHAIN_FOR_CLANG := prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/
