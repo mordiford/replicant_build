@@ -510,7 +510,7 @@ DX := $(HOST_OUT_EXECUTABLES)/dx
 ZIPALIGN := $(HOST_OUT_EXECUTABLES)/zipalign$(HOST_EXECUTABLE_SUFFIX)
 
 # relocation packer
-RELOCATION_PACKER := prebuilts/misc/$(BUILD_OS)-$(HOST_PREBUILT_ARCH)/relocation_packer/relocation_packer
+RELOCATION_PACKER := $(HOST_OUT_EXECUTABLES)/relocation_packer$(HOST_EXECUTABLE_SUFFIX)
 
 FINDBUGS := /usr/bin/findbugs
 EMMA_JAR := external/emma/lib/emma$(COMMON_JAVA_PACKAGE_SUFFIX)
