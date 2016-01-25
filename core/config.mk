@@ -489,7 +489,7 @@ endif
 DEFAULT_JACK_EXTRA_ARGS += --verbose error
 
 JILL := java -Xmx3500m -jar $(JILL_JAR)
-PROGUARD := external/proguard/bin/proguard.sh
+PROGUARD := /usr/bin/proguard
 JAVATAGS := build/tools/java-event-log-tags.py
 LLVM_RS_CC := $(HOST_OUT_EXECUTABLES)/llvm-rs-cc$(HOST_EXECUTABLE_SUFFIX)
 BCC_COMPAT := $(HOST_OUT_EXECUTABLES)/bcc_compat$(HOST_EXECUTABLE_SUFFIX)
@@ -513,7 +513,7 @@ ZIPALIGN := $(HOST_OUT_EXECUTABLES)/zipalign$(HOST_EXECUTABLE_SUFFIX)
 RELOCATION_PACKER := $(HOST_OUT_EXECUTABLES)/relocation_packer$(HOST_EXECUTABLE_SUFFIX)
 
 FINDBUGS := /usr/bin/findbugs
-EMMA_JAR := external/emma/lib/emma$(COMMON_JAVA_PACKAGE_SUFFIX)
+EMMA_JAR := /usr/share/java/emma$(COMMON_JAVA_PACKAGE_SUFFIX)
 
 # Tool to merge AndroidManifest.xmls
 ANDROID_MANIFEST_MERGER := java -classpath prebuilts/devtools/tools/lib/manifest-merger.jar com.android.manifmerger.Main merge
