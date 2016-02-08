@@ -58,6 +58,8 @@ PWD := $(shell pwd)
 TOP := .
 TOPDIR :=
 
+TOOLCHAIN_DIR := $(TOPDIR)toolchain
+
 BUILD_SYSTEM := $(TOPDIR)build/core
 
 # This is the default target.  It must be the first declared target.
@@ -1047,12 +1049,10 @@ clean:
 
 .PHONY: tcclean
 tcclean:
-	@cd toolchain
-	@rm -rf clang
-	@rm -rf gcc
-	@rm -rf headers
-	@rm -rf jack_jill
-	@cd ..
+	@rm -rf $(TOOLCHAIN_DIR)/clang
+	@rm -rf $(TOOLCHAIN_DIR)/gcc
+	@rm -rf $(TOOLCHAIN_DIR)/headers
+	@rm -rf $(TOOLCHAIN_DIR)/jack_jill
 	@echo -e ${CL_GRN}"All toolchain build directories removed."${CL_RST}
 
 
