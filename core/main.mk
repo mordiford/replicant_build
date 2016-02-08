@@ -1045,8 +1045,19 @@ clean:
 	@rm -rf $(OUT_DIR)/*
 	@echo -e ${CL_GRN}"Entire build directory removed."${CL_RST}
 
+.PHONY: tcclean
+tcclean:
+	@cd toolchain
+	@rm -rf clang
+	@rm -rf gcc
+	@rm -rf headers
+	@rm -rf jack_jill
+	@cd ..
+	@echo -e ${CL_GRN}"All toolchain build directories removed."${CL_RST}
+
+
 .PHONY: clobber
-clobber: clean
+clobber: clean tcclean
 
 # The rules for dataclean and installclean are defined in cleanbuild.mk.
 
