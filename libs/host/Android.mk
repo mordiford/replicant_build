@@ -36,7 +36,8 @@ LOCAL_PREBUILT_JAVA_LIBRARIES := \
     guava-tools:guava$(COMMON_JAVA_PACKAGE_SUFFIX) \
     org-netbeans-api-visual$(COMMON_JAVA_PACKAGE_SUFFIX) \
     org-openide-util$(COMMON_JAVA_PACKAGE_SUFFIX) \
-    org-openide-util-lookup$(COMMON_JAVA_PACKAGE_SUFFIX)
+    org-openide-util-lookup$(COMMON_JAVA_PACKAGE_SUFFIX) \
+    kxml2-2.3.0$(COMMON_JAVA_PACKAGE_SUFFIX)
 
 LOCAL_MODULE_TAGS := optional
 
