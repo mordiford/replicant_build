@@ -24,8 +24,8 @@ CLANG_CONFIG_x86_LINUX_HOST_EXTRA_CPPFLAGS := \
 CLANG_CONFIG_x86_LINUX_HOST_EXTRA_LDFLAGS := \
   --gcc-toolchain=toolchain/gcc/host/install \
   -Btoolchain/gcc/host/install/x86_64-linux/bin \
-  -Btoolchain/gcc/host/install/lib/gcc/x86_64-linux/4.9 \
-  -Ltoolchain/gcc/host/install/lib/gcc/x86_64-linux/4.9 \
+  -Btoolchain/gcc/host/install/lib/gcc/x86_64-linux/4.9.x \
+  -Ltoolchain/gcc/host/install/lib/gcc/x86_64-linux/4.9.x \
   -Ltoolchain/gcc/host/install/lib64
 
 else
@@ -37,8 +37,8 @@ CLANG_CONFIG_x86_LINUX_HOST_EXTRA_CPPFLAGS := \
 CLANG_CONFIG_x86_LINUX_HOST_EXTRA_LDFLAGS := \
   --gcc-toolchain=toolchain/gcc/host/install \
   -Btoolchain/gcc/host/install/x86_64-linux/bin \
-  -Btoolchain/gcc/host/install/lib/gcc/x86_64-linux/4.9/32 \
-  -Ltoolchain/gcc/host/install/lib/gcc/x86_64-linux/4.9/32 \
+  -Btoolchain/gcc/host/install/lib/gcc/x86_64-linux/4.9.x/32 \
+  -Ltoolchain/gcc/host/install/lib/gcc/x86_64-linux/4.9.x/32 \
   -Ltoolchain/gcc/host/install/lib32
 
 endif
