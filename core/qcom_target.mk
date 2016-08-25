@@ -13,8 +13,12 @@ endef
 
 # Set device-specific HALs into project pathmap
 define set-device-specific-path
-$(call project-set-path,qcom-$(2),$(strip $(if $(USE_DEVICE_SPECIFIC_$(1)), \
-    $(TARGET_DEVICE_DIR)/$(2), $(3))))
+$(if $(USE_DEVICE_SPECIFIC_$(1)), \
+    $(if $(DEVICE_SPECIFIC_$(1)_PATH), \
+        $(eval path := $(DEVICE_SPECIFIC_$(1)_PATH)), \
+        $(eval path := $(TARGET_DEVICE_DIR)/$(2))), \
+    $(eval path := $(3))) \
+$(call project-set-path,qcom-$(2),$(strip $(path)))
 endef
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
@@ -33,6 +37,7 @@ ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
         qcom_flags += -DQCOM_BSP_LEGACY
         # Enable legacy audio functions
         ifeq ($(BOARD_USES_LEGACY_ALSA_AUDIO),true)
+            USE_CUSTOM_AUDIO_POLICY := 1
             qcom_flags += -DLEGACY_ALSA_AUDIO
         endif
     endif
