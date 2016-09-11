@@ -10,7 +10,8 @@ endif
 
 ifeq ($(HOST_OS),linux)
 CLANG_CONFIG_x86_LINUX_HOST_EXTRA_ASFLAGS := \
-  --gcc-toolchain=toolchain/gcc/host/install
+  --gcc-toolchain=toolchain/gcc/host/install \
+  -Btoolchain/gcc/host/install/x86_64-linux/bin
 
 CLANG_CONFIG_x86_LINUX_HOST_EXTRA_CFLAGS := \
   --gcc-toolchain=toolchain/gcc/host/install \
