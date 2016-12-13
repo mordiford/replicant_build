@@ -1676,13 +1676,13 @@ function godir () {
 
 function cmremote()
 {
+    if ! git rev-parse --git-dir &> /dev/null
+    then
+        echo ".git directory not found. Please run this from the root directory of the Android repository you wish to set up."
+        return 1
+    fi
     git remote rm cmremote 2> /dev/null
     GERRIT_REMOTE=$(git config --get remote.github.projectname)
-    if [ -z "$GERRIT_REMOTE" ]
-    then
-        echo Unable to set up the git remote, are you under a git repo?
-        return 0
-    fi
     CMUSER=$(git config --get review.review.cyanogenmod.org.username)
     if [ -z "$CMUSER" ]
     then
@@ -1690,17 +1690,18 @@ function cmremote()
     else
         git remote add cmremote ssh://$CMUSER@review.cyanogenmod.org:29418/$GERRIT_REMOTE
     fi
-    echo You can now push to "cmremote".
+    echo "Remote 'cmremote' created"
 }
 
 function aospremote()
 {
-    git remote rm aosp 2> /dev/null
-    if [ ! -d .git ]
+    if ! git rev-parse --git-dir &> /dev/null
     then
-        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+        echo ".git directory not found. Please run this from the root directory of the Android repository you wish to set up."
+        return 1
     fi
-    PROJECT=`pwd -P | sed s#$ANDROID_BUILD_TOP/##g`
+    git remote rm aosp 2> /dev/null
+    PROJECT=$(pwd -P | sed -e "s#$ANDROID_BUILD_TOP\/##; s#-caf.*##; s#\/default##")
     if (echo $PROJECT | grep -qv "^device")
     then
         PFX="platform/"
@@ -1711,12 +1712,13 @@ function aospremote()
 
 function cafremote()
 {
-    git remote rm caf 2> /dev/null
-    if [ ! -d .git ]
+    if ! git rev-parse --git-dir &> /dev/null
     then
-        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+        echo ".git directory not found. Please run this from the root directory of the Android repository you wish to set up."
+        return 1
     fi
-    PROJECT=`pwd -P | sed s#$ANDROID_BUILD_TOP/##g`
+    git remote rm caf 2> /dev/null
+    PROJECT=$(pwd -P | sed -e "s#$ANDROID_BUILD_TOP\/##; s#-caf.*##; s#\/default##")
     if (echo $PROJECT | grep -qv "^device")
     then
         PFX="platform/"
@@ -2373,11 +2375,7 @@ function fixup_common_out_dir() {
     fi
 }
 
-# Force JAVA_HOME to point to java 1.7 if it isn't already set.
-#
-# Note that the MacOS path for java 1.7 includes a minor revision number (sigh).
-# For some reason, installing the JDK doesn't make it show up in the
-# JavaVM.framework/Versions/1.7/ folder.
+# Force JAVA_HOME to point to java 1.7/1.8 if it isn't already set.
 function set_java_home() {
     # Clear the existing JAVA_HOME value if we set it ourselves, so that
     # we can reset it later, depending on the version of java the build
