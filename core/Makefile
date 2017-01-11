@@ -477,8 +477,10 @@ else
 endif # TARGET_NO_BOOTLOADER
 ifneq ($(strip $(TARGET_NO_KERNEL)),true)
   INSTALLED_KERNEL_TARGET := $(PRODUCT_OUT)/kernel
+  INSTALLED_RECOVERY_KERNEL_TARGET := $(PRODUCT_OUT)/kernel-recovery
 else
   INSTALLED_KERNEL_TARGET :=
+  INSTALLED_RECOVERY_KERNEL_TARGET :=
 endif
 
 ifeq ($(TARGET_XLOADER_MLO),true)
@@ -1031,7 +1033,8 @@ $(recovery_ramdisk): $(MINIGZIP) \
 	$(hide) $(MINIGZIP) < $(recovery_uncompressed_ramdisk) > $@
 
 ifndef BOARD_CUSTOM_BOOTIMG_MK
-$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(recovery_ramdisk) $(recovery_kernel) \
+$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) \
+		$(recovery_ramdisk) $(recovery_kernel) \
 		$(RECOVERYIMAGE_EXTRA_DEPS)
 	@echo -e ${CL_CYN}"----- Making recovery image ------"${CL_RST}
 	$(call build-recoveryimage-target, $@)
