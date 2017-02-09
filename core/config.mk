@@ -518,7 +518,7 @@ FINDBUGS := /usr/bin/findbugs
 EMMA_JAR := /usr/share/java/emma$(COMMON_JAVA_PACKAGE_SUFFIX)
 
 # Tool to merge AndroidManifest.xmls
-ANDROID_MANIFEST_MERGER := java -classpath /usr/share/java/com.android.tools.build.manifest-merger.jar:/usr/share/java/com.android.tools.common.jar:/usr/share/java/androidsdk-sdklib.jar com.android.manifmerger.Main merge
+ANDROID_MANIFEST_MERGER := java -classpath /usr/share/java/com.android.tools.build.manifest-merger.jar:/usr/share/java/com.android.tools.common.jar:/usr/share/java/androidsdk-sdklib.jar:/usr/share/java/com.android.tools.sdk-common.jar com.android.manifmerger.Merger
 
 YACC_HEADER_SUFFIX:= .hpp
 
