@@ -21,6 +21,10 @@ my_full_libs_manifest_deps += $(foreach lib, $(LOCAL_STATIC_JAVA_AAR_LIBRARIES),
   $(call intermediates-dir-for,JAVA_LIBRARIES,$(lib),,COMMON)/aar/classes.jar)
 my_full_libs_manifest_files += $(foreach lib, $(LOCAL_STATIC_JAVA_AAR_LIBRARIES),\
   $(call intermediates-dir-for,JAVA_LIBRARIES,$(lib),,COMMON)/aar/AndroidManifest.xml)
+spaces :=
+spaces +=
+spaces +=
+my_full_libs_manifest_files := $(subst $(spaces),:,$(my_full_libs_manifest_files))
 
 LOCAL_RESOURCE_DIR += $(foreach lib, $(LOCAL_STATIC_JAVA_AAR_LIBRARIES),\
   $(call intermediates-dir-for,JAVA_LIBRARIES,$(lib),,COMMON)/aar/res)
