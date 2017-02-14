@@ -72,6 +72,7 @@ endif
 
 ifeq (true,$(my_pack_module_relocations))
 # Pack relocations
+$(relocation_packer_output): $(RELOCATION_PACKER)
 $(relocation_packer_output): $(relocation_packer_input) | $(ACP)
 	$(pack-elf-relocations)
 else
