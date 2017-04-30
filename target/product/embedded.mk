@@ -30,6 +30,7 @@ PRODUCT_PACKAGES += \
     grep \
     gzip \
     healthd \
+    heimdall \
     init \
     init.environ.rc \
     init.rc \
