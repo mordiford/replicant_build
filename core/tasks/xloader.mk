@@ -41,7 +41,7 @@ ifeq ($(TARGET_ARCH),arm)
             ARM_CROSS_COMPILE:=CROSS_COMPILE="$(ccache) $(ANDROID_BUILD_TOP)/prebuilt/linux-x86/toolchain/$(TARGET_KERNEL_CUSTOM_TOOLCHAIN)/bin/arm-eabi-"
         endif
     else
-        ARM_CROSS_COMPILE:=CROSS_COMPILE="$(ccache) $(ARM_EABI_TOOLCHAIN)/arm-eabi-"
+        ARM_CROSS_COMPILE:=CROSS_COMPILE="$(ccache) arm-none-eabi-"
     endif
     ccache = 
 endif
